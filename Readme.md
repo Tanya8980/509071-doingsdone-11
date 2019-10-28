@@ -1,7 +1,7 @@
 # Личный проект «Дела в Порядке»
 
 * Студент: [Tatyana  Kuleshova](https://up.htmlacademy.ru/php/11/user/509071).
-* Наставник: [Альберт Ильясов](https://htmlacademy.ru/profile/id1136283).
+* Наставник: `Неизвестно`.
 
 ---
 
