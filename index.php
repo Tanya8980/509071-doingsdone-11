@@ -101,6 +101,8 @@ $show_complete_tasks = rand(0, 1);
                                     <span class="checkbox_text">Записаться нa интенсив "Базовый PHP"</span>
                                 </label>
                             </td>
+                            <td class="task_date">10.10.2019</td>
+                            <td class="task-controls"></td>
                         </tr>
                     <?php endif;?>
                     
