@@ -1,43 +1,43 @@
 <?php
 // показывать или нет выполненные задачи
 $show_complete_tasks = rand(0, 1);
-$m_project = ["Входящие", "Учеба", "Работа", "Домашние дела", "Авто"];
+$m_projects = ['Входящие', 'Учеба', 'Работа', 'Домашние дела', 'Авто'];
 $m_tasks = [
     [
-        'task' => 'Собеседование в IT компании',
-        'date_task' => '01.12.2019',
-        'rank_task' => 'Работа',
-        'status_task' => 'false'
+        'name' => 'Собеседование в IT компании',
+        'date' => '01.12.2019',
+        'category' => 'Работа',
+        'status' => false
     ],
     [
-        'task' => 'Выполнить тестовое задание',
-        'date_task' => '25.12.2019',
-        'rank_task' => 'Работа',
-        'status_task' => 'false'
+        'name' => 'Выполнить тестовое задание',
+        'date' => '25.12.2019',
+        'category' => 'Работа',
+        'status' => false
     ],
     [
-        'task' => 'Сделать задание первого раздела',
-        'date_task' => '21.12.2019',
-        'rank_task' => 'Учеба',
-        'status_task' => 'true'
+        'name' => 'Сделать задание первого раздела',
+        'date' => '21.12.2019',
+        'category' => 'Учеба',
+        'status' => true
     ],
     [
-        'task' => 'Встреча с другом',
-        'date_task' => '22.12.2019',
-        'rank_task' => 'Входящие',
-        'status_task' => 'false'
+        'name' => 'Встреча с другом',
+        'date' => '22.12.2019',
+        'category' => 'Входящие',
+        'status' => false
     ],
     [
-        'task' => 'Купить корм для кота',
-        'date_task' => 'null',
-        'rank_task' => 'Домашние дела',
-        'status_task' => 'false'
+        'name' => 'Купить корм для кота',
+        'date' => null,
+        'category' => 'Домашние дела',
+        'status' => false
     ],
     [
-        'task' => 'Заказать пиццу',
-        'date_task' => 'null',
-        'rank_task' => 'Домашние дела',
-        'status_task' => 'false'
+        'name' => 'Заказать пиццу',
+        'date' => null,
+        'category' => 'Домашние дела',
+        'status' => false
     ],
 ];
 ?>
@@ -81,12 +81,12 @@ $m_tasks = [
 
                 <nav class="main-navigation">
                     <ul class="main-navigation__list">
-                        <?php
+                        <?php 
                         $index = 0;
-                        $num = count($m_project);
-                        while ($index < $num): ?>
+                        $num = count($m_projects);
+                        while($index < $num): ?>
                             <li class="main-navigation__list-item">
-                                <a class="main-navigation__list-item-link" href="#"><?=$m_project[$index];?></a>
+                                <a class="main-navigation__list-item-link" href="#"><?=$m_projects[$index];?></a>
                                 <span class="main-navigation__list-item-count">0</span>
                             </li>
                         <?php $index++; ?>
@@ -123,13 +123,13 @@ $m_tasks = [
                 </div>
 
                 <table class="tasks">
-                <?php foreach($m_tasks as $key => $val): ?>
-                <?php if($val['status_task'] == 'false'): ?>
+                <?php foreach($m_tasks as $val): ?>
+                <?php if($val['status'] == false): ?>
                     <tr class="tasks__item task">
                         <td class="task__select">
                             <label class="checkbox task__checkbox">
                                 <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
-                                <span class="checkbox__text"><?=$val['task'];?></span>
+                                <span class="checkbox__text"><?=$val['name'];?></span>
                             </label>
                         </td>
 
@@ -137,23 +137,24 @@ $m_tasks = [
                             <a class="download-link" href="#">Home.psd</a>
                         </td>
 
-                        <td class="task__date"><?=$val['date_task'];?></td>
+                        <td class="task__date"><?=$val['date'];?></td>
                     </tr>
-                    <!--показывать следующий тег <tr/>, если переменная $show_complete_tasks равна единице-->
-                    <?php elseif($show_complete_tasks == 1): ?>
+                    
+                    <?php elseif($show_complete_tasks == 0): ?>
+                        <? continue ?>  
+                    <?php else: ?>
+                        <!--показывать следующий тег <tr/>, если переменная $show_complete_tasks равна единице-->
                         <tr class="tasks__item task task--completed">
                             <td class="task__select">
                                 <label class="checkbox task__checkbox">
                                     <input class="checkbox__input visually-hidden" type="checkbox" checked>
-                                    <span class="checkbox__text"><?=$val['task'];?></span>
+                                    <span class="checkbox__text"><?=$val['name'];?></span>
                                 </label>
                             </td>
-                            <td class="task__date"><?=$val['date_task'];?></td>
+                            <td class="task__date"><?=$val['date'];?></td>
                             <td class="task__controls"></td>
                         </tr>
-                    <?php else: ?>
-                    <?php endif;?>
-                    <? continue ?>
+                    <?php endif;?> 
                 <?php endforeach; ?>
                 </table>
             </main>
