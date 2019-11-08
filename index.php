@@ -1,8 +1,8 @@
 <?php
 // показывать или нет выполненные задачи
 $show_complete_tasks = rand(0, 1);
-$m_projects = ['Входящие', 'Учеба', 'Работа', 'Домашние дела', 'Авто'];
-$m_tasks = [
+$projects = ['Входящие', 'Учеба', 'Работа', 'Домашние дела', 'Авто'];
+$tasks = [
     [
         'name' => 'Собеседование в IT компании',
         'date' => '01.12.2019',
@@ -81,7 +81,7 @@ $m_tasks = [
 
                 <nav class="main-navigation">
                     <ul class="main-navigation__list">
-                        <?php foreach($m_projects as &$project):?>
+                        <?php foreach($projects as &$project):?>
                             <li class="main-navigation__list-item">
                                 <a class="main-navigation__list-item-link" href="#"><?=$project;?></a>
                                 <span class="main-navigation__list-item-count">0</span>
@@ -119,13 +119,12 @@ $m_tasks = [
                 </div>
 
                 <table class="tasks">
-                <?php foreach($m_tasks as $val): ?>
-                <?php if($val['status'] == false): ?>
+                <?php foreach($tasks as $task): ?>
                     <tr class="tasks__item task">
                         <td class="task__select">
                             <label class="checkbox task__checkbox">
                                 <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
-                                <span class="checkbox__text"><?=$val['name'];?></span>
+                                <span class="checkbox__text"><?=$task['name'];?></span>
                             </label>
                         </td>
 
@@ -133,21 +132,19 @@ $m_tasks = [
                             <a class="download-link" href="#">Home.psd</a>
                         </td>
 
-                        <td class="task__date"><?=$val['date'];?></td>
+                        <td class="task__date"><?=$task['date'];?></td>
                     </tr>
                     
-                    <?php elseif($show_complete_tasks == 0): ?>
-                        <? continue ?>  
-                    <?php else: ?>
+                    <?php if($task['status'] == true && $show_complete_tasks == 1): ?>
                         <!--показывать следующий тег <tr/>, если переменная $show_complete_tasks равна единице-->
                         <tr class="tasks__item task task--completed">
                             <td class="task__select">
                                 <label class="checkbox task__checkbox">
                                     <input class="checkbox__input visually-hidden" type="checkbox" checked>
-                                    <span class="checkbox__text"><?=$val['name'];?></span>
+                                    <span class="checkbox__text"><?=$task['name'];?></span>
                                 </label>
                             </td>
-                            <td class="task__date"><?=$val['date'];?></td>
+                            <td class="task__date"><?=$task['date'];?></td>
                             <td class="task__controls"></td>
                         </tr>
                     <?php endif;?> 
