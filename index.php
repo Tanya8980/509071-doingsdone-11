@@ -40,7 +40,6 @@ $tasks = [
         'status' => false
     ],
 ];
-$project_tasks = array_column($tasks, 'category');
 function getTaskCount(array $tasks, $category)
 {
     $count = 0;
