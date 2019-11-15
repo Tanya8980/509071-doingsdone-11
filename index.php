@@ -41,11 +41,11 @@ $tasks = [
     ],
 ];
 $project_tasks = array_column($tasks, 'category');
-function getTasksCount(array $tasks, $list)
+function getTaskCount(array $tasks, $category)
 {
     $count = 0;
-    foreach ($tasks as $item) {
-        if ($item == $list) {
+    foreach ($tasks as $task) {
+        if ($category == $task['category']) {
             $count++;
         }
     }
@@ -95,7 +95,7 @@ function getTasksCount(array $tasks, $list)
                         <?php foreach($projects as $project): ?>
                             <li class="main-navigation__list-item">
                                 <a class="main-navigation__list-item-link" href="#"><?=$project;?></a>
-                                <span class="main-navigation__list-item-count"><?=(getTasksCount($project_tasks,$project));?></span>
+                                <span class="main-navigation__list-item-count"><?=(getTaskCount($tasks,$project));?></span>
                             </li>
                         <?php endforeach; ?>
                     </ul>
