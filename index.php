@@ -94,7 +94,7 @@ function getTaskCount(array $tasks, $category)
                         <?php foreach($projects as $project): ?>
                             <li class="main-navigation__list-item">
                                 <a class="main-navigation__list-item-link" href="#"><?=$project;?></a>
-                                <span class="main-navigation__list-item-count"><?=(getTaskCount($tasks,$project));?></span>
+                                <span class="main-navigation__list-item-count"><?=getTaskCount($tasks,$project); ?></span>
                             </li>
                         <?php endforeach; ?>
                     </ul>
