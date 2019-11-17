@@ -2,7 +2,6 @@
 // показывать или нет выполненные задачи
 $show_complete_tasks = rand(0, 1);
 ?>
-<div class="content">
             <section class="content__side">
                 <h2 class="content__side-heading">Проекты</h2>
 
@@ -10,8 +9,8 @@ $show_complete_tasks = rand(0, 1);
                     <ul class="main-navigation__list">
                         <?php foreach($projects as $project): ?>
                             <li class="main-navigation__list-item">
-                                <a class="main-navigation__list-item-link" href="#"><?=$project;?></a>
-                                <span class="main-navigation__list-item-count"><?=getTaskCount($tasks,$project); ?></span>
+                                <a class="main-navigation__list-item-link" href="#"><?=htmlspecialchars($project)?></a>
+                                <span class="main-navigation__list-item-count"><?=getTaskCount($tasks,$project)?></span>
                             </li>
                         <?php endforeach; ?>
                     </ul>
@@ -52,7 +51,7 @@ $show_complete_tasks = rand(0, 1);
                         <td class="task__select">
                             <label class="checkbox task__checkbox">
                                 <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
-                                <span class="checkbox__text"><?=$task['name'];?></span>
+                                <span class="checkbox__text"><?=htmlspecialchars($task['name'])?></span>
                             </label>
                         </td>
 
@@ -60,7 +59,7 @@ $show_complete_tasks = rand(0, 1);
                             <a class="download-link" href="#">Home.psd</a>
                         </td>
 
-                        <td class="task__date"><?=$task['date'];?></td>
+                        <td class="task__date"><?=htmlspecialchars($task['date'])?></td>
                     </tr>
 
                     <!--показывать следующий тег <tr/>, если переменная $show_complete_tasks равна единице-->
@@ -69,14 +68,13 @@ $show_complete_tasks = rand(0, 1);
                         <td class="task__select">
                             <label class="checkbox task__checkbox">
                                 <input class="checkbox__input visually-hidden" type="checkbox" checked>
-                                <span class="checkbox__text"><?=$task['name'];?></span>
+                                <span class="checkbox__text"><?=htmlspecialchars($task['name'])?></span>
                             </label>
                         </td>
-                        <td class="task__date"><?=$task['date'];?></td>
+                        <td class="task__date"><?=htmlspecialchars($task['date'])?></td>
                         <td class="task__controls"></td>
                     </tr>
                     <?php endif; ?>
                 <?php endforeach; ?>
                 </table>
             </main>
-</div>

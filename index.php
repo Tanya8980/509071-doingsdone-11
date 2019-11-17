@@ -67,7 +67,20 @@ function include_template($name, $data)
 
     return $result;
 }
-$page_content = include_template('main.php',['projects' =>$projects,'tasks' => $tasks]);
-$layout_content = include_template('layout.php',['content' => $page_content,'user_name' => 'Константин','title' => 'Дела в порядке']);
-print($layout_content);
+$page_content = include_template(
+    'main.php',
+    [
+        'projects' =>$projects,
+        'tasks' => $tasks
+    ]
+);
+$layout_content = include_template(
+    'layout.php',
+    [
+        'content' => $page_content,
+        'user_name' => 'Константин',
+        'title' => 'Дела в порядке'
+    ]
+    );
+echo ($layout_content);
 ?>
