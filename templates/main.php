@@ -1,6 +1,9 @@
 <?php
 // показывать или нет выполненные задачи
 $show_complete_tasks = rand(0, 1);
+$now_time = time();
+$secs_in_hour = 3600;
+$diff_in_hour = 25;
 ?>
             <section class="content__side">
                 <h2 class="content__side-heading">Проекты</h2>
@@ -45,9 +48,15 @@ $show_complete_tasks = rand(0, 1);
                 </div>
 
                 <table class="tasks">
-                <?php foreach($tasks as $task): ?>
-                    
-                    <tr class="tasks__item task" >
+                <?php foreach($tasks as $task): 
+                if ($task['date'] !=0): 
+                    $task_date = $task['date'];
+                    $conver_to_time = strtotime( $task_date);
+                    $diff_date = $conver_to_time - $now_time;
+                    $diff_in_hour = floor($diff_date/$secs_in_hour);
+                endif;
+                ?>    
+                    <tr class="tasks__item task<?php if($diff_in_hour <= 24):?>--important<?php endif;?>">
                         <td class="task__select">
                             <label class="checkbox task__checkbox">
                                 <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
